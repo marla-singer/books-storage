@@ -16,8 +16,6 @@
                                 <span><strong>Год издания: </strong>{{ result.year }}</span><br>
                                 <span><strong>Издательство: </strong>{{ result.publisher }}</span>
                             </p>
-                            <!--<p>{{ result.publisher }}</p>-->
-                            <!--<p>{{ result.publisher }}</p>-->
                             <p>{{ result.rating }}
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star-half-o" aria-hidden="true"></i>
@@ -27,13 +25,11 @@
 
                         <label>Описание</label>
                         <p>{{ result.description }}</p>
-                        <a class="btn btn-sm btn-success" href="https://livelib.ru/{{ result.link }}">More details</a>
+                        <a class="btn btn-sm btn-success" href="https://livelib.ru/{{ result.link }}" target="_blank">More details</a>
                         <button type="button" class="btn btn-sm btn-primary">Add to collection</button>
-
                     </div>
                 </div>
             </div>
-
         </div>
     {{ else }}
         <div class="alert alert-warning" role="alert"> No found</div>

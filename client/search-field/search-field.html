@@ -1,12 +1,16 @@
 <template name="searchField">
     <div class="container">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter ISBN number" value="9785990808355">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="find-by-isbn">Find</button>
+        <div class="form-group">
+            <form class="input-group col-xs-4" method="get" id="find-by-isbn-form">
+           <span class="input-group-btn">
+                <button class="btn btn-danger" type="reset" id="clear-all">Clear</button>
             </span>
+                <input type="text" class="form-control" id="search-field" placeholder="Enter ISBN number">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="find-by-isbn">Find</button>
+            </span>
+            </form>
         </div>
-        <br>
         {{# if result }}
             {{> cardResult result=result }}
         {{/if }}
