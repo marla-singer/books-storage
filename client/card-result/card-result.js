@@ -7,3 +7,14 @@ Template.cardResult.helpers({
         return res.error
     },
 });
+
+Template.cardResult.events({
+    'click #save-book' () {
+        const bookInformation = {};
+        bookInformation.details = Template.currentData().result;
+
+        Meteor.call('saveBook', bookInformation, (error, result) => {
+            sAlert.success('Книга сохранена!')
+        });
+    }
+});
