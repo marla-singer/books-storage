@@ -24,3 +24,6 @@ http
 twbs:bootstrap
 fortawesome:fontawesome
 aldeed:simple-schema
+aldeed:collection2
+juliancwirko:s-alert
+juliancwirko:s-alert-flip
