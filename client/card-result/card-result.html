@@ -1,0 +1,41 @@
+<template name="cardResult">
+    {{# unless noFound }}
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="{{ result.img }}" alt="">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="form-group">
+                            <h4>{{ result.title }}</h4>
+                            <h6 class="text-muted">{{ result.author }}</h6>
+                            <p>
+                                <span><strong>ISBN: </strong>{{ result.isbn }}</span><br>
+                                <span><strong>Год издания: </strong>{{ result.year }}</span><br>
+                                <span><strong>Издательство: </strong>{{ result.publisher }}</span>
+                            </p>
+                            <!--<p>{{ result.publisher }}</p>-->
+                            <!--<p>{{ result.publisher }}</p>-->
+                            <p>{{ result.rating }}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </p>
+                        </div>
+
+                        <label>Описание</label>
+                        <p>{{ result.description }}</p>
+                        <a class="btn btn-sm btn-success" href="https://livelib.ru/{{ result.link }}">More details</a>
+                        <button type="button" class="btn btn-sm btn-primary">Add to collection</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {{ else }}
+        <div class="alert alert-warning" role="alert"> No found</div>
+    {{/ unless }}
+</template>
