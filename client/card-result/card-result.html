@@ -1,11 +1,10 @@
 <template name="cardResult">
     {{# unless noFound }}
         <div class="panel panel-default">
-
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-2">
-                        <img src="{{ result.img }}" alt="">
+                        <img src="{{ result.img }}">
                     </div>
                     <div class="col-xs-10">
                         <div class="form-group">
@@ -22,16 +21,17 @@
                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                             </p>
                         </div>
-
                         <label>Описание</label>
                         <p>{{ result.description }}</p>
-                        <a class="btn btn-sm btn-success" href="https://livelib.ru/{{ result.link }}" target="_blank">More details</a>
-                        <button type="button" class="btn btn-sm btn-primary">Add to collection</button>
+                        <a class="btn btn-sm btn-success" href="{{ result.link }}" target="_blank">Страница на LiveLib</a>
+                        <button type="button" class="btn btn-sm btn-primary" id="save-book">Добавить в коллекцию</button>
                     </div>
                 </div>
             </div>
         </div>
     {{ else }}
-        <div class="alert alert-warning" role="alert"> No found</div>
+        <div class="alert alert-warning" role="alert">
+            {{ result.error }}
+        </div>
     {{/ unless }}
 </template>
