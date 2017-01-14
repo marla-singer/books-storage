@@ -1,15 +1,8 @@
 import { Template } from 'meteor/templating';
 
 Template.searchField.onCreated(function () {
-    const instance = this;
     // Init reactive var
     this.information = new ReactiveVar('');
-
-    // Return state data
-    // Meteor.call('returnPlaceholder', '123', (error, result) => {
-    //
-    //     instance.result.set(result);
-    // });
 });
 
 Template.searchField.helpers({
@@ -19,18 +12,19 @@ Template.searchField.helpers({
 });
 
 Template.searchField.events({
-    'blur input' (event, instance) {
-      instance.isbn = event.currentTarget.value;
-    },
     'submit #find-by-isbn-form'(event, instance) {
         event.preventDefault();
-
-        // const isbn = "9785990808355";
-        // const isbn = "9785995";
-
+        // Read ISBN form input
+        const isbn = instance.$('input').val();
         // Find book by entering isbn
-        Meteor.call('findByISBN', instance.isbn, (error, result) => {
+        Meteor.call('findByISBN', isbn, (error, result) => {
             instance.information.set(result);
         });
+
+        // Return state data
+        // Meteor.call('returnPlaceholder', (error, result) => {
+        //
+        //     instance.information.set(result);
+        // });
     },
 });
