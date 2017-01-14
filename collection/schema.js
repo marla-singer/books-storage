@@ -1,42 +1,73 @@
 import { Mongo } from 'meteor/mongo';
 
-const Books = new Mongo.Collection('books');
+const Books = new Mongo.Collection('Books');
 
 Books.schema = new SimpleSchema({
-    title: {
+    details: {
+        type: Object,
+        optional: true
+    },
+    'details.title': {
         type: String
     },
-    author: {
+    'details.author': {
         type: String
     },
-    description: {
+    'details.description': {
+        type: String,
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
+    },
+    'details.publisher': {
         type: String,
         optional: true,
     },
-    publisher: {
+    'details.year': {
         type: String,
         optional: true,
     },
-    year: {
+    'details.rating': {
         type: String,
         optional: true,
     },
-    rating: {
+    'details.isbn': {
         type: String,
         optional: true,
     },
-    isbn: {
+    'details.link': {
         type: String,
         optional: true,
     },
-    link: {
+    'details.img': {
         type: String,
         optional: true,
     },
-    img: {
+    read_information: {
+        type: [Object],
+        optional: true,
+    },
+    'read_information.data': {
         type: String,
         optional: true,
+    },
+    'read_information.person': {
+        type: String,
+        optional: true
+    },
+    purchase_data: {
+        type: String,
+        optional: true,
+    },
+    owner: {
+        type: String,
+        optional: true
     },
 });
+
+Books.attachSchema(Books.schema);
 
 export default Books;
