@@ -1,0 +1,13 @@
+<template name="searchField">
+    <div class="container">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter ISBN number" value="9785990808355">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="find-by-isbn">Find</button>
+            </span>
+        </div>
+        {{# if result }}
+            {{> cardResult result=result }}
+        {{/if }}
+    </div>
+</template>
