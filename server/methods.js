@@ -3,6 +3,9 @@ import { check } from 'meteor/check';
 import { HTTP } from 'meteor/http';
 import cheerio from 'cheerio';
 
+// Collection
+import Books from '/collection/schema';
+
 Meteor.methods({
     // State data
     returnPlaceholder () {
@@ -29,30 +32,32 @@ Meteor.methods({
         const result = HTTP.get(url,{});
         // Parse result by css selector
         $ = cheerio.load(result.content);
-        // Find block with book in result. The block has class 'biglist'
-        const bookWasFound = $('.biglist').text();
+        // Find block with book in result. The block has class 'biglist'. Get first element
+        const book = $('.book-big-list').first();
 
-        if (bookWasFound.length < 1) {
+        if (book.length < 1) {
             return {
-                error: 'Book was not found'
+                error: 'Книга не найдена'
             }
         }
 
         // Parse string details_info to array by spaces
-        const details_info = $('.book-details-info').text().split(/\s+/);
+        const details_info = book.find('.book-details-info').text().split(/\s+/);
         // Find indexes for information about Publisher, Year of publication and ISBN
         const pub_index = details_info.indexOf('Издательство:') + 1;
         const year_index = details_info.indexOf('г.') - 1;
         const isbn_index = details_info.indexOf('ISBN:') + 1;
+        // Create link to livelib
+        const link = `https://livelib.ru/${book.find('.event-book-title').attr('href')}`;
 
         // Create & return object with parsed information
         return {
-            author: $('.block-book-author').text(),
-            title: $('.block-book-title').text(),
-            description: $('.book-description').text(),
-            link: $('.event-book-title').attr('href'),
-            img: $('.boocover > img').attr('src'),
-            rating: $('.rating-book > span > span').text(),
+            author: book.find('.block-book-author').text(),
+            title: book.find('.block-book-title').text(),
+            description: book.find('.book-description').text(),
+            link: link,
+            img: book.find('.boocover > img').attr('src'),
+            rating: book.find('.rating-book > span > span').text(),
             publisher: details_info[pub_index],
             year: details_info[year_index],
             isbn: details_info[isbn_index],
@@ -61,5 +66,11 @@ Meteor.methods({
     // Parse ready HTML content to Object
     parseToObject (htmlMarkup) {
         check(htmlMarkup, String);
+    },
+    saveBook (data) {
+        // data has format { details: {} }
+        check(data, Object);
+
+        return Books.insert(data);
     }
 });
