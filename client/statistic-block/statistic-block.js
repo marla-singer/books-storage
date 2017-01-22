@@ -1,3 +1,5 @@
+import Books from '/collection/schema.js';
+
 Template.statisticBlock.helpers({
     totalBooks () {
         return Books.find().count();
