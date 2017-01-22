@@ -2,27 +2,9 @@
     {{# unless noFound }}
         <div class="panel panel-default">
             <div class="panel-body">
+                {{> bookCard result=result }}
                 <div class="row">
-                    <div class="col-xs-2">
-                        <img src="{{ result.img }}">
-                    </div>
-                    <div class="col-xs-10">
-                        <div class="form-group">
-                            <h4>{{ result.title }}</h4>
-                            <h6 class="text-muted">{{ result.author }}</h6>
-                            <p>
-                                <span><strong>ISBN: </strong>{{ result.isbn }}</span><br>
-                                <span><strong>Год издания: </strong>{{ result.year }}</span><br>
-                                <span><strong>Издательство: </strong>{{ result.publisher }}</span>
-                            </p>
-                            <p>{{ result.rating }}
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                        <label>Описание</label>
-                        <p>{{ result.description }}</p>
+                    <div class="col-xs-offset-2">
                         <a class="btn btn-sm btn-success" href="{{ result.link }}" target="_blank">Страница на LiveLib</a>
                         <button type="button" class="btn btn-sm btn-primary" id="save-book">Добавить в коллекцию</button>
                     </div>

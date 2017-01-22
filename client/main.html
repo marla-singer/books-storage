@@ -1,5 +1,17 @@
 <body>
-<h1>Поиск книг по ISBN</h1>
-    {{> searchField }}
-    {{> sAlert }}
+<!--{{> searchField }}-->
+{{> bookCatalog }}
+{{> sAlert }}
 </body>
+
+<template name="bookPreview">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4><i class="fa fa-book" aria-hidden="true"></i> Информация о книге</h4>
+        </div>
+        <div class="panel-body">
+            {{> bookCard result=bookDetails }}
+        </div>
+    </div>
+
+</template>
