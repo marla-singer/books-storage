@@ -16,11 +16,6 @@ Books.schema = new SimpleSchema({
     'details.description': {
         type: String,
         optional: true,
-        autoform: {
-            afFieldInput: {
-                type: "textarea"
-            }
-        }
     },
     'details.publisher': {
         type: String,
