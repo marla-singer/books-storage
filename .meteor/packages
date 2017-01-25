@@ -24,5 +24,6 @@ twbs:bootstrap
 fortawesome:fontawesome
 aldeed:simple-schema
 aldeed:collection2
+aldeed:autoform
 juliancwirko:s-alert
 juliancwirko:s-alert-flip

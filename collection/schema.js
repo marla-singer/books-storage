@@ -42,16 +42,27 @@ Books.schema = new SimpleSchema({
         optional: true,
     },
     read_information: {
+        label: 'Информация о читателе',
         type: [Object],
         optional: true,
     },
-    'read_information.data': {
+    'read_information.$.data': {
+        label: 'Дата прочтения',
         type: String,
         optional: true,
+        // autoform: {
+        //     type: "date",
+        // }
     },
-    'read_information.person': {
+    'read_information.$.person': {
+        label: 'Чтец',
         type: String,
-        optional: true
+        optional: true,
+        allowedValues: ['Даша', 'Наталья'],
+        defaultValue: 'Даша',
+        autoform: {
+            type: 'select-checkbox-inline',
+        }
     },
     purchase_data: {
         type: String,
