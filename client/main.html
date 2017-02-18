@@ -5,44 +5,69 @@
 </body>
 
 <template name="bookPreview">
-  <div class="panel panel-default">
-
 
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <span class="panel-title"><i class="fa fa-book" aria-hidden="true"></i> Информация о книге</span>
-      </div>
-      <div class="panel-body">
-        {{> bookCard result=bookDetails }}
-      </div>
+        <div class="panel-heading">
+            <span class="panel-title"><i class="fa fa-book" aria-hidden="true"></i> Информация о книге</span>
+        </div>
+        <div class="panel-body">
+            {{> bookCard result=bookDetails }}
+        </div>
     </div>
 
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <span class="panel-title">Информация о читателе</span>
-      </div>
-      <div class="panel-body">
-        <div class="form-goup">
-          <label for="" class="control-label">Дата/месяц прочтения:</label>
-            <div class='input-group date' id='datetimepicker1'>
-              <input type="text" id="read-date" class="form-control" />
-              <span class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-              </span>
+        <div class="panel-heading">
+            <span class="panel-title">Информация о читателе</span>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="" class="control-label">Дата/месяц прочтения:</label>
+                <div class="form-inline">
+                    <select name="read-day" id="" class="form-control col-sm-3">
+                        {{# each day in days }}
+                            <option value="{{ day }}">
+                                {{ day }}
+                            </option>
+                        {{/ each }}
+                    </select>
+
+                    <select name="read-month" id="" class="form-control col-sm-3">
+                        {{# each month in months }}
+                            <option value="{{ month.value }}" {{ month.checked }}>
+                                {{ month.value }}
+                            </option>
+                        {{/ each }}
+                    </select>
+
+                    <select name="read-year" id="" class="form-control col-sm-3">
+                        {{# each year in years }}
+                            <option value="{{ year.value }}" {{ year.checked }}>
+                                {{ year.value }}
+                            </option>
+                        {{/ each }}
+                    </select>
+
+                </div>
+
+
+                <!--<div class='input-group date' id='datetimepicker1'>-->
+                <!--<input type="text" id="read-date" class="form-control" />-->
+                <!--<span class="input-group-addon">-->
+                <!--<i class="fa fa-calendar"></i>-->
+                <!--</span>-->
+                <!--</div>-->
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="inlineRadioOptions" class="control-label">Чтец:</label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Daria
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Natali
+                </label>
             </div>
         </div>
-        <div class="form-goup">
-          <label for="inlineRadioOptions" class="control-label">Чтец:</label>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Daria
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Natali
-          </label>
-        </div>
-      </div>
     </div>
-  </div>
-
 
 </template>

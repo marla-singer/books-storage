@@ -12,12 +12,12 @@ Template.bookCatalog.helpers({
         return Books.find().fetch();
     },
     bookDetails () {
-        const book = Books.findOne('FNQvnbdjdQiZyYQic')
+        const book = Books.findOne('4ao2ZZmu4xCFNbo4J');
         const selectedBook = Template.instance().selectedBook.get();
 
         // If book was selected then return book details otherwise doesn't show template
-        // return selectedBook ? selectedBook.details : undefined;
-        return book.details
+        return selectedBook ? selectedBook.details : undefined;
+        // return book.details
     }
 });
 
