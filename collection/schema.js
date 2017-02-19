@@ -50,19 +50,17 @@ Books.schema = new SimpleSchema({
         label: 'Дата прочтения',
         type: String,
         optional: true,
-        // autoform: {
-        //     type: "date",
-        // }
     },
     'read_information.$.person': {
         label: 'Чтец',
         type: String,
         optional: true,
-        allowedValues: ['Даша', 'Наталья'],
-        defaultValue: 'Даша',
-        autoform: {
-            type: 'select-checkbox-inline',
-        }
+        allowedValues: ['Daria', 'Natali'],
+    },
+    'read_information.$.rating': {
+        label: 'Личный рейтинг',
+        type: String,
+        optional: true,
     },
     purchase_data: {
         type: String,

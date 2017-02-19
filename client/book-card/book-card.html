@@ -12,11 +12,7 @@
                     <span><strong>Год издания: </strong>{{ result.year }}</span><br>
                     <span><strong>Издательство: </strong>{{ result.publisher }}</span>
                 </p>
-                <p>{{ result.rating }}
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                </p>
+                <p>{{ result.rating }} {{> starsRating }}</p>
             </div>
             <label>Описание</label>
             <p>{{ result.description }}</p>

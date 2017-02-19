@@ -17,56 +17,81 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
+            <i class="fa fa-pencil-square" aria-hidden="true"></i>
             <span class="panel-title">Информация о читателе</span>
         </div>
         <div class="panel-body">
-            <div class="form-group">
-                <label for="" class="control-label">Дата/месяц прочтения:</label>
-                <div class="form-inline">
-                    <select name="read-day" id="" class="form-control col-sm-3">
-                        {{# each day in days }}
-                            <option value="{{ day }}">
-                                {{ day }}
-                            </option>
-                        {{/ each }}
-                    </select>
 
-                    <select name="read-month" id="" class="form-control col-sm-3">
-                        {{# each month in months }}
-                            <option value="{{ month.value }}" {{ month.checked }}>
-                                {{ month.value }}
-                            </option>
-                        {{/ each }}
-                    </select>
-
-                    <select name="read-year" id="" class="form-control col-sm-3">
-                        {{# each year in years }}
-                            <option value="{{ year.value }}" {{ year.checked }}>
-                                {{ year.value }}
-                            </option>
-                        {{/ each }}
-                    </select>
-
+            <form class="form-group">
+                <!-- Block about reader -->
+                <div class="form-group">
+                <p>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    Даша 12.03.17 Оценка:  7
+                </p>
+                <p>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    Даша 12.03.17 {{> starsRating }} 7
+                </p>
                 </div>
 
+                <hr>
+                <!-- Add new reader if -->
+                <!-- Set reader -->
+                <div class="form-group">
+                    <label for="inlineRadioOptions" class="control-label">Чтец:</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="set-reader" id="inlineRadio1" value="Daria"> Дарья
+                    </label>
+                    <label class="radio-inline">
+                        <input type="checkbox" name="set-reader" id="inlineRadio1" value="Natali"> Наталья
+                    </label>
+                </div>
+                <!-- Set data-->
+                <div class="form-group">
+                    <label for="" class="control-label">Дата прочтения:</label>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <select name="set-day" id="" class="form-control col-sm-3">
+                                {{# each day in days }}
+                                    <option value="{{ day }}">
+                                        {{ day }}
+                                    </option>
+                                {{/ each }}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="set-month" id="" class="form-control col-sm-3">
+                                {{# each month in months }}
+                                    <option value="{{ month.value }}" {{ month.selected }}>
+                                        {{ month.label }}
+                                    </option>
+                                {{/ each }}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="set-year" id="" class="form-control col-sm-3">
+                                {{# each year in years }}
+                                    <option value="{{ year.value }}" {{ year.selected }}>
+                                        {{ year.value }}
+                                    </option>
+                                {{/ each }}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Set rating -->
+                <div class="form-group">
+                    {{> starsRating }}
+                    {{# each rating in ratingSet }}
+                    <label class="radio-inline">
+                        <input type="radio" name="set-rating" value="{{ rating }}"> {{ rating }}
+                    </label>
+                    {{/ each }}
+                </div>
 
-                <!--<div class='input-group date' id='datetimepicker1'>-->
-                <!--<input type="text" id="read-date" class="form-control" />-->
-                <!--<span class="input-group-addon">-->
-                <!--<i class="fa fa-calendar"></i>-->
-                <!--</span>-->
-                <!--</div>-->
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="inlineRadioOptions" class="control-label">Чтец:</label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Daria
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Natali
-                </label>
-            </div>
+                <button class="btn btn-primary" id="save-reader-info">Save</button>
+            </form>
         </div>
     </div>
 
