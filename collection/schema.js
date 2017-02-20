@@ -45,6 +45,7 @@ Books.schema = new SimpleSchema({
     label: 'Информация о читателе',
     type: [Object],
     optional: true,
+    defaultValue: []
   },
   'read_information.$.date': {
     label: 'Дата прочтения',
@@ -55,7 +56,7 @@ Books.schema = new SimpleSchema({
     label: 'Чтец',
     type: String,
     optional: true,
-    allowedValues: ['Daria', 'Natali'],
+    allowedValues: ['Дарья', 'Наталья'],
   },
   'read_information.$.rating': {
     label: 'Личный рейтинг',
