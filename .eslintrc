@@ -1,0 +1,53 @@
+{
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "meteor": true
+  },
+  "parser": "babel-eslint",
+    "parserOptions": {
+    "allowImportExportEverywhere": true,
+    "ecmaVersion": 7
+  },
+  "plugins": [
+    "meteor"
+  ],
+  "extends": [
+    "airbnb-base",
+    "plugin:meteor/recommended"
+  ],
+  "settings": {
+    "import/resolver": "meteor"
+  },
+  "rules": {
+    "arrow-body-style": [
+      2,
+      "always"
+    ],
+    "comma-dangle": [
+      2,
+      "always-multiline"
+    ],
+    "func-names": [
+      "error",
+      "never"
+    ],
+    "import/no-extraneous-dependencies": 0,
+    "meteor/no-session": [
+      0
+    ],
+    "no-negated-condition": [
+      "error"
+    ],
+    "no-absolute-path": [
+      0
+    ],
+    "space-before-function-paren": [
+      2,
+      {
+        "anonymous": "always",
+        "named": "always"
+      }
+    ]
+  }
+}
