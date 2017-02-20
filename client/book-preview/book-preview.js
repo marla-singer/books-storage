@@ -1,6 +1,6 @@
 // TODO: подключить библеотку momentjs
 import { Template } from 'meteor/templating';
-
+import range from 'lodash.range';
 import Books from '/collection/schema';
 
 Template.bookPreview.helpers({
@@ -42,4 +42,8 @@ Template.bookPreview.events({
     // Update read information in collection
     Books.update(bookId, { $push: { read_information: insertData }});
   },
+  // TODO: набрасывать класс active на тэги, делать вид, что тэг выбран
+  'click button[name="book-tag"]' (event, templateInstance) {
+    console.dir(event)
+  }
 });
