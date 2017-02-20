@@ -46,7 +46,7 @@ Books.schema = new SimpleSchema({
     type: [Object],
     optional: true,
   },
-  'read_information.$.data': {
+  'read_information.$.date': {
     label: 'Дата прочтения',
     type: String,
     optional: true,
