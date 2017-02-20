@@ -1,0 +1,32 @@
+<template name="selectDate">
+  <!-- Set data-->
+    <div class="form-inline">
+      <div class="form-group">
+        <select name="set-day" id="" class="form-control col-sm-3">
+          {{# each day in days }}
+            <option value="{{ day }}">
+              {{ day }}
+            </option>
+          {{/ each }}
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="set-month" id="" class="form-control col-sm-3">
+          {{# each month in months }}
+            <option value="{{ month.value }}" {{ month.selected }}>
+              {{ month.label }}
+            </option>
+          {{/ each }}
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="set-year" id="" class="form-control col-sm-3">
+          {{# each year in years }}
+            <option value="{{ year.value }}" {{ year.selected }}>
+              {{ year.value }}
+            </option>
+          {{/ each }}
+        </select>
+      </div>
+    </div>
+</template>
