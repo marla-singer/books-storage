@@ -1,7 +1,9 @@
 <template name="bookPreview">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <span class="panel-title"><i class="fa fa-book" aria-hidden="true"></i> Информация о книге</span>
+      <span class="panel-title"><i class="fa fa-book" aria-hidden="true"></i>
+        Информация о книге
+      </span>
     </div>
     <div class="panel-body">
       {{> bookCard result=book.details }}
@@ -14,64 +16,32 @@
       <span class="panel-title">Информация о читателе</span>
     </div>
     <div class="panel-body">
-
       <form class="form-group">
         <!-- Block about reader -->
         <div class="form-group">
-          <p>
-            <i class="fa fa-check" aria-hidden="true"></i>
-            Даша 12.03.17 Оценка:  7
-          </p>
-          <p>
-            <i class="fa fa-check" aria-hidden="true"></i>
-            Даша 12.03.17 {{> starsRating }} 7
-          </p>
+          {{# each reader in readerList }}
+            <p>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+              {{ reader.person }} {{ reader.date }} Оценка: {{ reader.rating}} из 10
+            </p>
+          {{/ each }}
         </div>
-
         <hr>
         <!-- Add new reader if -->
         <!-- Set reader -->
         <div class="form-group">
           <label for="inlineRadioOptions" class="control-label">Чтец:</label>
           <label class="checkbox-inline">
-            <input type="checkbox" name="set-reader" id="inlineRadio1" value="Daria"> Дарья
+            <input type="checkbox" name="set-reader" id="inlineRadio1" value="Дарья"> Дарья
           </label>
           <label class="radio-inline">
-            <input type="checkbox" name="set-reader" id="inlineRadio1" value="Natali"> Наталья
+            <input type="checkbox" name="set-reader" id="inlineRadio1" value="Наталья"> Наталья
           </label>
         </div>
-        <!-- Set data-->
+        <!-- Set Date -->
         <div class="form-group">
           <label for="" class="control-label">Дата прочтения:</label>
-          <div class="form-inline">
-            <div class="form-group">
-              <select name="set-day" id="" class="form-control col-sm-3">
-                {{# each day in days }}
-                  <option value="{{ day }}">
-                    {{ day }}
-                  </option>
-                {{/ each }}
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="set-month" id="" class="form-control col-sm-3">
-                {{# each month in months }}
-                  <option value="{{ month.value }}" {{ month.selected }}>
-                    {{ month.label }}
-                  </option>
-                {{/ each }}
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="set-year" id="" class="form-control col-sm-3">
-                {{# each year in years }}
-                  <option value="{{ year.value }}" {{ year.selected }}>
-                    {{ year.value }}
-                  </option>
-                {{/ each }}
-              </select>
-            </div>
-          </div>
+        {{> selectDate }}
         </div>
         <!-- Set rating -->
         <div class="form-group">
@@ -85,6 +55,56 @@
 
         <button class="btn btn-primary" id="save-reader-info">Save</button>
       </form>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <i class="fa fa-clipboard" aria-hidden="true"></i>
+      <span class="panel-title">
+        Дополнительная информация
+      </span>
+    </div>
+    <div class="panel panel-body">
+      <a href="https://livelib.ru" target="_blank" class="btn btn-success">
+        Ссылка на livelib
+      </a>
+
+      <p>Дата покупки: </p>
+      <p>Принадлежит: Дарье, Наталье, Общая </p>
+      <p>Теги: научная-фантастика, детская книга, современная проза</p>
+      <hr>
+      <!-- Если информации нет, то добавить -->
+      <!-- Если информация есть, то отобразить обновить -->
+      <p class="panel-title"><strong>Изменить/добавить</strong></p>
+      <!-- Set Date -->
+      <div class="form-group">
+        <label class="control-label">Дата покупки:</label>
+        {{> selectDate }}
+      </div>
+      <!-- Set owner -->
+      <div class="form-group">
+        <label class="control-label">Принадлежит:</label>
+        <label class="radio-inline">
+          <input type="radio" name="set-owner" value="Дарья" checked> Дарья
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="set-owner" value="Наталья"> Наталья
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="set-owner" value="Общая"> Общая
+        </label>
+      </div>
+      <!-- Set tags -->
+      <div class="form-group">
+        <label for="">Теги:</label>
+        <button type="button" name="book-tag" class="btn btn-xs btn-default">Научная фантастика</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-primary">Детская литература</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-info">Научно-популярная</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-success">Фэнтези</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-warning">Современная проза</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-danger">Исторический роман</button>
+      </div>
+      <button class="btn btn-primary">Сохранить</button>
     </div>
   </div>
 </template>
