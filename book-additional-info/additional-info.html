@@ -1,0 +1,63 @@
+<template name="bookAdditionalInformation">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <i class="fa fa-clipboard" aria-hidden="true"></i>
+      <span class="panel-title">
+        Дополнительная информация
+      </span>
+    </div>
+    <div class="panel panel-body">
+      <a href="https://livelib.ru" target="_blank" class="btn btn-success">
+        Ссылка на livelib
+      </a>
+
+      <p>Дата покупки: </p>
+      <p>Владелец: Дарье, Наталье, Общая </p>
+      <p>Теги: научная-фантастика, детская книга, современная проза</p>
+      <strong>Убрала из коллекции</strong>
+      <hr>
+      <!-- Если информации нет, то добавить -->
+      <!-- Если информация есть, то отобразить обновить -->
+      <p class="panel-title"><strong>Изменить/добавить</strong></p>
+      <!-- Set Date -->
+      <!-- Remove book from collection -->
+      <div class="form-group">
+        <input type="checkbox" name="set-putchase-data"> Указать дату покупки
+      </div>
+      {{# if setPurchaseData }}
+        <div class="form-group">
+          <label class="control-label">Дата покупки:</label>
+          {{> selectDate }}
+        </div>
+      {{/ if }}
+      <!-- Set owner -->
+      <div class="form-group">
+        <label class="control-label">Владелец:</label>
+        <label class="radio-inline">
+          <input type="radio" name="set-owner" value="Дарья" checked> Дарья
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="set-owner" value="Наталья"> Наталья
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="set-owner" value="Общая"> Общая
+        </label>
+      </div>
+      <!-- Remove book from collection -->
+      <div class="form-group">
+        <input type="checkbox" name="set-unhual" value="unhaul-book"> Убрала книгу из коллекции
+      </div>
+      <!-- Set tags -->
+      <div class="form-group">
+        <label for="">Теги:</label>
+        <button type="button" name="book-tag" class="btn btn-xs btn-default active">Научная фантастика</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-primary">Детская литература</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-info">Научно-популярная</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-success">Фэнтези</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-warning">Современная проза</button>
+        <button type="button" name="book-tag" class="btn btn-xs btn-danger">Исторический роман</button>
+      </div>
+      <button class="btn btn-primary">Сохранить</button>
+    </div>
+  </div>
+</template>
