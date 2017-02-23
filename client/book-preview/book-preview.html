@@ -30,7 +30,7 @@
         <!-- Add new reader if -->
         <!-- Set reader -->
         <div class="form-group">
-          <label for="inlineRadioOptions" class="control-label">Чтец:</label>
+          <label for="inlineRadioOptions" class="control-label">Кто читал:</label>
           <label class="checkbox-inline">
             <input type="checkbox" name="set-reader" id="inlineRadio1" value="Дарья"> Дарья
           </label>
@@ -70,20 +70,27 @@
       </a>
 
       <p>Дата покупки: </p>
-      <p>Принадлежит: Дарье, Наталье, Общая </p>
+      <p>Владелец: Дарье, Наталье, Общая </p>
       <p>Теги: научная-фантастика, детская книга, современная проза</p>
+      <strong>Убрала из коллекции</strong>
       <hr>
       <!-- Если информации нет, то добавить -->
       <!-- Если информация есть, то отобразить обновить -->
       <p class="panel-title"><strong>Изменить/добавить</strong></p>
       <!-- Set Date -->
+      <!-- Remove book from collection -->
+      <div class="form-group">
+        <input type="checkbox" name="set-putchase-data"> Указать дату покупки
+      </div>
+      {{# if setPurchaseData }}
       <div class="form-group">
         <label class="control-label">Дата покупки:</label>
         {{> selectDate }}
       </div>
+      {{/ if }}
       <!-- Set owner -->
       <div class="form-group">
-        <label class="control-label">Принадлежит:</label>
+        <label class="control-label">Владелец:</label>
         <label class="radio-inline">
           <input type="radio" name="set-owner" value="Дарья" checked> Дарья
         </label>
@@ -93,6 +100,10 @@
         <label class="radio-inline">
           <input type="radio" name="set-owner" value="Общая"> Общая
         </label>
+      </div>
+      <!-- Remove book from collection -->
+      <div class="form-group">
+        <input type="checkbox" name="set-unhual" value="unhaul-book"> Убрала книгу из коллекции
       </div>
       <!-- Set tags -->
       <div class="form-group">

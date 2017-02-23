@@ -13,10 +13,25 @@ Template.bookPreview.helpers({
     const book = Template.instance().data.book;
 
     return book ? book.read_information : [];
+  },
+  setPurchaseData () {
+    const checkValue = Template.instance().setPurchaseData;
+
+    return !!(checkValue && checkValue.get());
   }
 });
 
 Template.bookPreview.events({
+  'change [name=set-putchase-data]' (event, templateInstance) {
+    const checkedValue = event.currentTarget.checked;
+
+    // If reactive var doesn't exist then create it
+    if (templateInstance.setPurchaseData === undefined) {
+      templateInstance.setPurchaseData = new ReactiveVar(false);
+    }
+    // Set value
+    templateInstance.setPurchaseData.set(checkedValue);
+  },
   'submit form': function (event, templateInstance) {
     event.preventDefault();
 
