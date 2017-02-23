@@ -53,7 +53,7 @@ Books.schema = new SimpleSchema({
     optional: true,
   },
   'read_information.$.person': {
-    label: 'Чтец',
+    label: 'Кто читал',
     type: String,
     optional: true,
     allowedValues: ['Дарья', 'Наталья'],
@@ -71,6 +71,15 @@ Books.schema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  tags: {
+    type: [String],
+    optional: true
+  },
+  unhaul_book: {
+    label: 'Убрала книгу из коллекции',
+    type: Boolean,
+    optional: true
+}
 });
 
 Books.attachSchema(Books.schema);
