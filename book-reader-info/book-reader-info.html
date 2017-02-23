@@ -1,0 +1,56 @@
+<template name="bookReaderInformation">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+      <span class="panel-title">
+        Информация о читателе
+      </span>
+    </div>
+    <div class="panel-body">
+      <form class="form-group">
+        <!-- Block about reader -->
+        <div class="form-group">
+          {{# each reader in readerList }}
+            <p>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+              {{ reader.person }} {{ reader.date }} Оценка: {{ reader.rating}} из 10
+            </p>
+          {{/ each }}
+        </div>
+        <hr>
+        <!-- Add new reader if -->
+        <!-- Set reader -->
+        <div class="form-group">
+          <label for="inlineRadioOptions" class="control-label">
+            Кто читал:
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="set-reader" id="inlineRadio1" value="Дарья"> Дарья
+          </label>
+          <label class="radio-inline">
+            <input type="checkbox" name="set-reader" id="inlineRadio1" value="Наталья"> Наталья
+          </label>
+        </div>
+        <!-- Set Date -->
+        <div class="form-group">
+          <label for="" class="control-label">
+            Дата прочтения:
+          </label>
+          {{> selectDate }}
+        </div>
+        <!-- Set rating -->
+        <div class="form-group">
+          {{> starsRating }}
+          {{# each rating in ratingSet }}
+            <label class="radio-inline">
+              <input type="radio" name="set-rating" value="{{ rating }}"> {{ rating }}
+            </label>
+          {{/ each }}
+        </div>
+        <button class="btn btn-primary" id="save-reader-info">
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+</template>
