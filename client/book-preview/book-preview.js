@@ -48,7 +48,7 @@ Template.bookPreview.events({
     const insertData = {
       person: values.get('set-reader'),
       rating: values.get('set-rating'),
-      date: selectedDate
+      date: selectedDate.toLocaleDateString()
     };
 
     // Update read information in current document
@@ -57,8 +57,7 @@ Template.bookPreview.events({
     // Update read information in collection
     Books.update(bookId, { $push: { read_information: insertData }});
   },
-  // TODO: набрасывать класс active на тэги, делать вид, что тэг выбран
   'click button[name="book-tag"]' (event, templateInstance) {
-    console.dir(event)
+    event.currentTarget.classList.toggle('active');
   }
 });
