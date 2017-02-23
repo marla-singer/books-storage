@@ -8,7 +8,7 @@ Template.bookCatalog.onCreated(function () {
 });
 
 Template.bookCatalog.helpers({
-  list () {
+  bookList () {
     return Books.find().fetch();
   },
   currentBook () {

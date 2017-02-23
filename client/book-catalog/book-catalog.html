@@ -7,12 +7,12 @@
         <table class="table table-bordered table-hover">
           <thead>
           <tr>
-            <th>Author</th>
-            <th>Title</th>
+            <th data-sort-by="author" name="sort-by">Автор</th>
+            <th data-sort-by="title" name="sort-by">Название книги</th>
           </tr>
           </thead>
           <tbody>
-          {{# each book in list }}
+          {{# each book in bookList }}
             <tr data-id="{{ book._id }}">
               <td>{{ book.details.author }}</td>
               <td>{{ book.details.title }}</td>
