@@ -1,5 +1,3 @@
-import { Template } from 'meteor/templating';
-
 Template.bookAdditionalInformation.helpers({
   setPurchaseData () {
     const checkValue = Template.instance().setPurchaseData;
