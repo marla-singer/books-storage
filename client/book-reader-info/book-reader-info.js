@@ -2,6 +2,20 @@ import { Template } from 'meteor/templating';
 import range from 'lodash.range';
 import Books from '/collection/schema';
 
+Template.bookReaderInformation.onCreated(function () {
+  this.readerList = new ReactiveVar();
+  // Get ID of current book
+  const bookId = this.data.book ? this.data.book._id : '';
+
+  this.autorun(() => {
+    this.subscribe('bookReadInformation', bookId);
+    // Get fresh data of current book
+    const currentBook = Books.findOne(bookId) || {};
+    // Set list of book readers
+    this.readerList.set(currentBook.read_information);
+  })
+});
+
 Template.bookReaderInformation.helpers({
   ratingSet () {
     // Auto generate rating from 0 to 10 with step 1
@@ -9,9 +23,11 @@ Template.bookReaderInformation.helpers({
   },
   readerList () {
     // TODO: Реактивно обновлять список о читателях, когда добавили новую информацию
-    const book = Template.instance().data.book;
+    // const book = Template.instance().data.book;
 
-    return book ? book.read_information : [];
+    return Template.instance().readerList.get() || [];
+
+    // return book ? book.read_information : [];
   },
 });
 

@@ -63,22 +63,28 @@ Books.schema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  purchase_data: {
+  additional_info: {
+    label: 'Дополнительная информация о книге',
+    type: Object,
+    optional: true
+  },
+  'additional_info.purchase_data': {
     type: String,
     optional: true,
   },
-  owner: {
+  'additional_info.owner': {
     type: String,
     optional: true,
   },
-  tags: {
+  'additional_info.tags': {
     type: [String],
     optional: true
   },
-  unhaul_book: {
+  'additional_info.unhaul_book': {
     label: 'Убрала книгу из коллекции',
     type: Boolean,
-    optional: true
+    optional: true,
+    defaultValue: false
 }
 });
 

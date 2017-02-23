@@ -7,14 +7,21 @@
       </span>
     </div>
     <div class="panel panel-body">
-      <a href="https://livelib.ru" target="_blank" class="btn btn-success">
+      {{# if addInfo.purchase_data }}
+        <p><strong>Дата покупки:</strong> {{ addInfo.purchase_data }}</p>
+      {{/ if }}
+      {{# if addInfo.owner }}
+        <p><strong>Владелец:</strong> {{ addInfo.owner }}</p>
+      {{/ if }}
+      {{# if addInfo.unhaul_book }}
+        <p class="text-danger"><strong>Убрали из коллекции</strong></p>
+      {{/ if }}
+      {{# if addInfo.tags }}
+        <p><strong>Теги:</strong> {{ addInfo.tags }}</p>
+      {{/ if }}
+      <a href="{{ book.details.link }}" target="_blank" class="btn btn-success">
         Ссылка на livelib
       </a>
-
-      <p>Дата покупки: </p>
-      <p>Владелец: Дарье, Наталье, Общая </p>
-      <p>Теги: научная-фантастика, детская книга, современная проза</p>
-      <strong>Убрала из коллекции</strong>
       <hr>
       <!-- Если информации нет, то добавить -->
       <!-- Если информация есть, то отобразить обновить -->
