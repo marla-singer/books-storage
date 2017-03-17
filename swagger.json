@@ -1,0 +1,27 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "``` GET /apis?limit=200&lifecycle=production```",
+        "version": "MVP",
+        "title": "APInf Catalog REST API",
+    },
+    "tags": [
+        {
+            "name": "APIs",
+            "description":  "``` GET /apis?limit=200&lifecycle=production```"
+        },
+        {
+            "name": "Organizations",
+            "description": "Organizations related methods"
+        },
+        {
+            "name": "Users",
+            "description": "Users related methods"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "host": "virtserver.swaggerhub.com",
+    "basePath": "/kyyberi/APInf-REST-API/MVP"
+}
